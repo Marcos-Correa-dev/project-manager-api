@@ -7,6 +7,8 @@ import { UsersController } from './users/users.controller';
   controllers: [
     ProjectsController,
     TasksController,
-    UsersController ]
+    UsersController,
+    ProjectsController,
+  ],
 })
 export class ControllersModule {}

@@ -8,6 +8,10 @@ export class User implements IUser {
   id: number;
   lastName: string;
   password: string;
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-expect-error
   projects: Project[];
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-expect-error
   task: Task[];
 }
