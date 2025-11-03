@@ -16,4 +16,6 @@ export class ProjectEntity implements IProject {
   user: IUser;
   @OneToMany(() => TaskEntity, (task) => task.project)
   task: ITask[];
+  @OneToMany(() => TaskEntity, (task) => task.project)
+  tasks: ITask[];
 }
