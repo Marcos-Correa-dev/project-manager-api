@@ -24,7 +24,7 @@ export class TasksRepositoryService
   add(payload: DeepPartial<ITask>): Promise<ITask> {
     return this.save(payload);
   }
-  updateById(payload: DeepPartial<ITask>): DeepPartial<ITask> {
-    return this.update(payload.id, payload);
+  updateById(id: number, payload: DeepPartial<ITask>) {
+    return this.update(id, payload);
   }
 }

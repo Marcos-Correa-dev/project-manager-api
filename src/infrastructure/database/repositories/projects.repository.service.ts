@@ -16,7 +16,7 @@ export class ProjectsRepositoryService
     return this.findBy({ user: { id: userId } });
   }
 
-  findById(id: number): Promise<IProject> | null {
+  findById(id: number): Promise<IProject | null> {
     return this.findOneBy({ id });
   }
   add(payload: DeepPartial<IProject>) {
