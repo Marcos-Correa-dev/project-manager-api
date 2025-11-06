@@ -1,9 +1,18 @@
 import { IProject } from '../../../domain/interfaces/project.interface';
 import { ITask } from '../../../domain/interfaces/task.interface';
-import { IUser } from '../../../domain/interfaces/user.interface';
-import { Column, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import type { IUser } from '../../../domain/interfaces/user.interface';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { TaskEntity } from './task.entity';
+import { UserEntity } from './user.entity';
 
+@Entity('project')
 export class ProjectEntity implements IProject {
   @PrimaryGeneratedColumn()
   id: number;
@@ -13,9 +22,9 @@ export class ProjectEntity implements IProject {
   @Column({ name: 'description', nullable: false })
   description: string;
 
+  @ManyToOne(() => UserEntity, (user) => user.task)
+  @JoinColumn()
   user: IUser;
   @OneToMany(() => TaskEntity, (task) => task.project)
   task: ITask[];
-  @OneToMany(() => TaskEntity, (task) => task.project)
-  tasks: ITask[];
 }
