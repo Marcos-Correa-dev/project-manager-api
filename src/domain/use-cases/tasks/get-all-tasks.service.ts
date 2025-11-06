@@ -17,7 +17,7 @@ export class GetAllTasksService implements BaseUseCase {
     const tasks = await this.tasksRepository.findAll(userData.id);
 
     if (!tasks) {
-      throw new Error('Tasks not found');
+      throw new Error('Erro ao listar tarefas');
     }
 
     return tasks;

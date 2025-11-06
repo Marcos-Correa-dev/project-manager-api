@@ -23,17 +23,17 @@ export class CreateTaskService implements BaseUseCase {
       payload.task.projectId,
     );
 
-    const createTask = await this.tasksRepository.add({
+    const createdTask = await this.tasksRepository.add({
       name: payload.task.name,
       status: payload.task.status,
       project: { id: projectData?.id },
       user: { id: userData.id },
     });
 
-    if (!createTask) {
-      throw new Error('Task not created');
+    if (!createdTask) {
+      throw new Error('Erro ao criar tarefa');
     }
 
-    return createTask;
+    return createdTask;
   }
 }
