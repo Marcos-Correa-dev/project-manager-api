@@ -8,8 +8,8 @@ import { IUser } from '../../interfaces/user.interface';
 export class CreateUserService implements BaseUseCase {
   constructor(private readonly usersRepository: UsersRepositoryService) {}
 
-  async execute(user: CreateUserDto[]): Promise<IUser> {
-    const createdUser = await this.usersRepository.add(user[0]);
+  async execute(...args: unknown[]): Promise<unknown> {
+    const createdUser = await this.usersRepository.add(args[0]);
 
     if (!createdUser) {
       throw new Error('User not created');

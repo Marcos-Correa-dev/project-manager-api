@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { BaseUseCase } from '../base-use-case';
 import { ProjectsRepositoryService } from '../../../infrastructure/database/repositories/projects.repository.service';
-import { CreateProjectDto } from '../../../gateways/controllers/dtos/create-project.dto';
 import { UsersRepositoryService } from '../../../infrastructure/database/repositories/users.repository.service';
+import { CreateProjectDto } from '../../../gateways/controllers/projects/dtos/create-project.dto';
 import { IProject } from '../../interfaces/project.interface';
 
 @Injectable()

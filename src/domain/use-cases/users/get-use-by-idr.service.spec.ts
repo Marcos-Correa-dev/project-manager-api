@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { GetUseByIdrService } from './get-use-by-idr.service';
+import { GetUseByIdrService } from './get-use-by-id.service';
 
 describe('GetUseByIdrService', () => {
   let service: GetUseByIdrService;
