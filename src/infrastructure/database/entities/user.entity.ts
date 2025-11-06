@@ -1,10 +1,11 @@
 import { IUser } from '../../../domain/interfaces/user.interface';
-import { Column, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { ProjectEntity } from './project.entity';
 import { IProject } from '../../../domain/interfaces/project.interface';
 import { ITask } from '../../../domain/interfaces/task.interface';
 import { TaskEntity } from './task.entity';
 
+@Entity('user')
 export class UserEntity implements IUser {
   @PrimaryGeneratedColumn()
   id: number;
