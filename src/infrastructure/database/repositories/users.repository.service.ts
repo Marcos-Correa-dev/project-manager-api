@@ -19,7 +19,7 @@ export class UsersRepositoryService
     return this.save(payload);
   }
 
-  findByEmail(email: string): Promise<IUser | null> {
+  findByEmail(email: string): Promise<IUser> {
     return this.findOneByOrFail({ email });
   }
 }
