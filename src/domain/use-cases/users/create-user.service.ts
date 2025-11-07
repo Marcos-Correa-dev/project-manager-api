@@ -3,16 +3,23 @@ import { UsersRepositoryService } from '../../../infrastructure/database/reposit
 import { BaseUseCase } from '../base-use-case';
 import { CreateUserDto } from '../../../gateways/controllers/users/create-user.dto';
 import { IUser } from '../../interfaces/user.interface';
+import { hash } from 'bcrypt';
 
 @Injectable()
 export class CreateUserService implements BaseUseCase {
+  private readonly DEFAULT_SALT_ROUNDS = 10;
   constructor(private readonly usersRepository: UsersRepositoryService) {}
 
-  async execute(...args: unknown[]): Promise<unknown> {
-    const createdUser = await this.usersRepository.add(args[0]);
+  async execute(user: CreateUserDto): Promise<IUser> {
+    const hashedPassword = await hash(user.password, this.DEFAULT_SALT_ROUNDS);
+
+    const createdUser = await this.usersRepository.add({
+      ...user,
+      password: hashedPassword,
+    });
 
     if (!createdUser) {
-      throw new Error('User not created');
+      throw new Error('Usuário não pôde ser criado');
     }
 
     return createdUser;
