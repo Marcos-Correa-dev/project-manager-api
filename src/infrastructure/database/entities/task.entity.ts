@@ -1,6 +1,4 @@
 import { ITask } from '../../../domain/interfaces/task.interface';
-import * as projectInterface from '../../../domain/interfaces/project.interface';
-import * as userInterface from '../../../domain/interfaces/user.interface';
 import {
   Column,
   Entity,
@@ -10,6 +8,8 @@ import {
 } from 'typeorm';
 import { ProjectEntity } from './project.entity';
 import { UserEntity } from './user.entity';
+import * as projectInterface from '../../../domain/interfaces/project.interface';
+import * as userInterface from '../../../domain/interfaces/user.interface';
 
 @Entity('task')
 export class TaskEntity implements ITask {
@@ -26,11 +26,9 @@ export class TaskEntity implements ITask {
     cascade: true,
     nullable: false,
   })
-  @ManyToOne(() => UserEntity, (user) => user.task)
-  @JoinColumn()
   project: projectInterface.IProject;
 
-  @ManyToOne(() => UserEntity, (user) => user.projects)
+  @ManyToOne(() => UserEntity, (user) => user.task)
   @JoinColumn()
   user: userInterface.IUser;
 }
