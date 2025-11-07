@@ -7,7 +7,12 @@ import { DatabaseModule } from '../../../infrastructure/database/database.module
 
 @Module({
   imports: [DatabaseModule],
-  providers: [GetAllTasksService, GetProjectsByIdService, CreateProjectService],
+  providers: [
+    GetAllTasksService,
+    GetProjectsByIdService,
+    CreateProjectService,
+    GetAllProjectsService,
+  ],
   exports: [
     GetAllProjectsService,
     GetProjectsByIdService,
