@@ -6,7 +6,7 @@ import { IUser } from '../../interfaces/user.interface';
 export class GetUsersByEmailService {
   constructor(private readonly usersRepository: UsersRepositoryService) {}
 
-  async execute(email: string): Promise<IUser | null> {
+  async execute(email: string): Promise<IUser> {
     const user = await this.usersRepository.findByEmail(email);
 
     return user;

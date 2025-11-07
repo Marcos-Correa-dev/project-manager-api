@@ -1,4 +1,4 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { GetUsersByEmailService } from '../../domain/use-cases/users/get-users-by-email.service';
 import { JwtService } from '@nestjs/jwt';
 import { compare } from 'bcrypt';
