@@ -29,6 +29,7 @@ export class AuthGuardService implements CanActivate {
       return true;
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const request = context.switchToHttp().getRequest();
     const token = this.extractTokenFromHeader(request);
     if (!token) {
@@ -36,12 +37,12 @@ export class AuthGuardService implements CanActivate {
     }
 
     try {
-      const payload = await this.jwtService.verifyAsync(
-        token,
-        {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      const payload = await this.jwtService.verifyAsync(token, {
         secret: jwtConstants.secret,
       });
 
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-member-access
       request['user'] = payload;
     } catch {
       throw new UnauthorizedException();
