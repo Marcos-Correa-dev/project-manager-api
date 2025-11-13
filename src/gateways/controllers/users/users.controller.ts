@@ -10,6 +10,7 @@ import {
   UnprocessableEntityException,
 } from '@nestjs/common';
 import { GetUseByIdService } from '../../../domain/use-cases/users/get-use-by-id.service';
+import { Public } from '../../../getways/guards/auth-guard/auth-guard.service';
 
 @Controller('users')
 export class UsersController {
@@ -28,6 +29,7 @@ export class UsersController {
   }
 
   @Post()
+  @Public()
   async create(@Body() createUserDto: CreateUserDto) {
     try {
       return this.createUserUseCase.execute(createUserDto);
